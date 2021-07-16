@@ -1,0 +1,95 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/links":
+    get:
+      summary: list links
+      tags:
+      - Links
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create link
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - "$ref": "#/components/schemas/link"
+  "/api/v1/links/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show link
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update link
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - "$ref": "#/components/schemas/link"
+    delete:
+      summary: delete link
+      responses:
+        '204':
+          description: successful
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
+security:
+- bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    errors_object:
+      type: object
+      properties:
+        errors:
+          "$ref": "#/components/schemas/errors_map"
+    errors_map:
+      type: object
+      additionalProperties:
+        type: array
+        items:
+          type: string
+    link:
+      type: object
+      properties:
+        url:
+          type: string
+      required:
+      - url
+    new_link:
+      type: object
+      properties:
+        url:
+          type: string
+      required:
+      - url
