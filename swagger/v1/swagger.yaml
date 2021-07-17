@@ -58,7 +58,7 @@ servers:
 - url: https://{defaultHost}
   variables:
     defaultHost:
-      default: staging-short-link.herokuapp.com/api/v1
+      default: staging-short-link.herokuapp.com
 security:
 - bearerAuth: []
 components:
