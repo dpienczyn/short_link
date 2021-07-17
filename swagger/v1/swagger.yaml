@@ -55,10 +55,10 @@ paths:
         '204':
           description: successful
 servers:
-- url: http://{defaultHost}
+- url: https://{defaultHost}
   variables:
     defaultHost:
-      default: localhost:3000
+      default: staging-short-link.herokuapp.com/api/v1
 security:
 - bearerAuth: []
 components:
